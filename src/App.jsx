@@ -1,12 +1,12 @@
 
-import { Carta } from "./componentes/Carta";
+//import { Carta } from "./componentes/Carta";
+import { GrupoCartas } from "./componentes/GrupoCartas";
 //import { GrupoCartas } from "./componentes/GrupoCartas";
 
 
 const App = () => {
   return <div>
-    <Carta></Carta>
-      
+      <GrupoCartas></GrupoCartas>
     
       
   </div>

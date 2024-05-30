@@ -10,7 +10,7 @@ export const GlobalProvider = ({ children }) => {
         // Cargar los datos desde el servidor al montar el componente
         const fetchHistorias = async () => {
             try {
-                const response = await fetch('http://localhost:3000/historias');
+                const response = await fetch('https://json-server-xi-puce.vercel.app/historias');
                 const data = await response.json();
                 setHistorias(data);
             } catch (error) {
@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
 
     const agregarHistoria = async (historia) => {
         try {
-            const response = await fetch('http://localhost:3000/historias', {
+            const response = await fetch('https://json-server-xi-puce.vercel.app/historias', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const GlobalProvider = ({ children }) => {
 
     const editarHistoria = async (id, historiaActualizada) => {
         try {
-            const response = await fetch(`http://localhost:3000/historias/${id}`, {
+            const response = await fetch(`https://json-server-xi-puce.vercel.app/historias/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export const GlobalProvider = ({ children }) => {
 
     const borrarHistoria = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/historias/${id}`, {
+            const response = await fetch(`https://json-server-xi-puce.vercel.app/historias/${id}`, {
                 method: 'DELETE',
             });
 

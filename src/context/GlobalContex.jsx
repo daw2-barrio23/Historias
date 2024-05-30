@@ -21,8 +21,25 @@ export const GlobalProvider = ({ children }) => {
         fetchHistorias();
     }, []);
 
-    const agregarHistoria = (historia) => {
-        setHistorias(prev => [...prev, { ...historia, id: Date.now() }]);
+    const agregarHistoria = async (historia) => {
+        try {
+            const response = await fetch('http://localhost:3000/historias', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(historia),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al agregar la historia');
+            }
+
+            const nuevaHistoria = await response.json();
+            setHistorias(prev => [...prev, nuevaHistoria]);
+        } catch (error) {
+            console.error('Error al agregar la historia:', error);
+        }
     };
 
     const editarHistoria = (id, historiaActualizada) => {

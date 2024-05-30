@@ -24,11 +24,11 @@ const Cards = () => {
     setIsModalOpen(false);
   };
 
-  const handleSave = (data) => {
+  const handleSave = async (data) => {
     if (data.id) {
       editarHistoria(data.id, data);
     } else {
-      agregarHistoria(data);
+      await agregarHistoria(data);
     }
     handleClose();
   };

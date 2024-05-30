@@ -26,7 +26,7 @@ const Cards = () => {
 
   const handleSave = async (data) => {
     if (data.id) {
-      editarHistoria(data.id, data);
+      await editarHistoria(data.id, data);
     } else {
       await agregarHistoria(data);
     }

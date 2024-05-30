@@ -42,8 +42,25 @@ export const GlobalProvider = ({ children }) => {
         }
     };
 
-    const editarHistoria = (id, historiaActualizada) => {
-        setHistorias(prev => prev.map(hist => hist.id === id ? historiaActualizada : hist));
+    const editarHistoria = async (id, historiaActualizada) => {
+        try {
+            const response = await fetch(`http://localhost:3000/historias/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(historiaActualizada),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al editar la historia');
+            }
+
+            const updatedHistoria = await response.json();
+            setHistorias(prev => prev.map(hist => hist.id === id ? updatedHistoria : hist));
+        } catch (error) {
+            console.error('Error al editar la historia:', error);
+        }
     };
 
     const borrarHistoria = async (id) => {

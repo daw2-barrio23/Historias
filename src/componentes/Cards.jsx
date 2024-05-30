@@ -55,7 +55,7 @@ const Cards = () => {
         ))}
       </div>
       <div className="mt-4 flex justify-center">
-        <Button auto icon={<Plus className="w-4 h-4" />} onClick={onOpen}>
+        <Button auto icon={<Plus className="w-4 h-4" />} onClick={onOpen} className="bg-success">
           Añadir Historia
         </Button>
       </div>

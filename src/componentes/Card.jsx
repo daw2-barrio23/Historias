@@ -17,10 +17,10 @@ const CardItem = ({ title, date, description, imageUrl, onEdit, onDelete }) => (
     <CardFooter className="absolute bg-black/40 bottom-0 z-10 w-full flex justify-between items-center p-2">
       <p className="text-tiny text-white/60">{description}</p>
       <div className="flex gap-2">
-        <Button auto light onClick={onEdit}>
+        <Button auto light onClick={onEdit} className="bg-primary">
           <Pencil className="text-white" />
         </Button>
-        <Button auto light onClick={onDelete}>
+        <Button auto light onClick={onDelete} className="bg-danger">
           <Trash2 className="text-white" />
         </Button>
       </div>

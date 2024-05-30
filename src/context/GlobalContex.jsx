@@ -46,8 +46,24 @@ export const GlobalProvider = ({ children }) => {
         setHistorias(prev => prev.map(hist => hist.id === id ? historiaActualizada : hist));
     };
 
+    const borrarHistoria = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/historias/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al borrar la historia');
+            }
+
+            setHistorias(prev => prev.filter(hist => hist.id !== id));
+        } catch (error) {
+            console.error('Error al borrar la historia:', error);
+        }
+    };
+
     return (
-        <GlobalContext.Provider value={{ historias, agregarHistoria, editarHistoria, dataHistòria, setDataHistòria }}>
+        <GlobalContext.Provider value={{ historias, agregarHistoria, editarHistoria, borrarHistoria, dataHistòria, setDataHistòria }}>
             {children}
         </GlobalContext.Provider>
     );

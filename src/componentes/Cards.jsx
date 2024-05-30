@@ -6,7 +6,7 @@ import { GlobalContext } from "../context/GlobalContex";
 import ModalForm from './ModalForm';
 
 const Cards = () => {
-  const { historias, setDataHistòria, agregarHistoria, editarHistoria, dataHistòria } = useContext(GlobalContext);
+  const { historias, setDataHistòria, agregarHistoria, editarHistoria, borrarHistoria, dataHistòria } = useContext(GlobalContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEdit = (historia) => {
@@ -14,9 +14,9 @@ const Cards = () => {
     setIsModalOpen(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     console.log("ID de la historia a borrar:", id);
-    // Aquí se añadirá la lógica para borrar la historia de la base de datos
+    await borrarHistoria(id);
   };
 
   const handleClose = () => {

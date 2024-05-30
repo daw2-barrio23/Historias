@@ -54,9 +54,9 @@ const Cards = () => {
           />
         ))}
       </div>
-      <div className="mt-4 flex justify-center">
-        <Button auto icon={<Plus className="w-4 h-4" />} onClick={onOpen} className="bg-success">
-          Añadir Historia
+      <div className="fixed right-14 bottom-14">
+        <Button onClick={onOpen} className="bg-success h-20 rounded-full shadow-large">
+          <Plus className="w-12 h-12 text-black font-bold"/>
         </Button>
       </div>
       {isModalOpen && (

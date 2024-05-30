@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-import historiasData from '../bd/bd.json'; // Importar el archivo JSON
 
 export const GlobalContext = createContext();
 
@@ -8,8 +7,18 @@ export const GlobalProvider = ({ children }) => {
     const [dataHistòria, setDataHistòria] = useState(null);
 
     useEffect(() => {
-        // Cargar los datos de bd.json al montar el componente
-        setHistorias(historiasData.historias);
+        // Cargar los datos desde el servidor al montar el componente
+        const fetchHistorias = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/historias');
+                const data = await response.json();
+                setHistorias(data);
+            } catch (error) {
+                console.error('Error al obtener las historias:', error);
+            }
+        };
+
+        fetchHistorias();
     }, []);
 
     const agregarHistoria = (historia) => {
